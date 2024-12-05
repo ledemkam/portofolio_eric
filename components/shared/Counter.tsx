@@ -1,8 +1,8 @@
 'use client'
 
 import { useState } from 'react'
-import { Button } from './ui/button'
 import { MinusIcon, PlusIcon } from 'lucide-react'
+import { Button } from '../ui/button'
 
 export default function Counter() {
   const [count, setCount] = useState(0)
@@ -14,7 +14,7 @@ export default function Counter() {
       <Button size='icon' onClick={decrement}>
         <MinusIcon />
       </Button>
-      <p>Current vote: {count}</p>
+      <p>Aktuelle Abstimmung: {count}</p>
       <Button size='icon' onClick={increment}>
         <PlusIcon />
       </Button>

@@ -1,6 +1,8 @@
-import Intro from "@/components/Intro";
-import RecentPosts from "@/components/RecentPosts";
-import ProjectsPage from "./projects/page";
+import Intro from "@/components/shared/Intro";
+import NewsletterForm from "@/components/form/NewsletterForm";
+import RecentPosts from "@/components/shared/RecentPosts";
+import RecentProjects from "@/components/shared/RecentProjects";
+
 
 export default function Home() {
   return (
@@ -8,7 +10,8 @@ export default function Home() {
       <div className="container max-w-3xl">
         <Intro />
         <RecentPosts/>
-        <ProjectsPage/>
+        <RecentProjects/>
+        <NewsletterForm/>
       </div>
     </section>
   )

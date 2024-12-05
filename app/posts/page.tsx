@@ -1,4 +1,4 @@
-import PostsWithSearch from "@/components/PostWithSearch";
+import PostsWithSearch from "@/components/shared/PostWithSearch";
 import { getPosts } from "@/lib/posts";
 
 

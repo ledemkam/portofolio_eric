@@ -2,10 +2,11 @@
 
 import { useState } from 'react'
 import { PostMetadata } from '@/lib/posts'
-import { Input } from './ui/input'
-import { Button } from './ui/button'
+
+import { CircleX } from 'lucide-react'
+import { Input } from '../ui/input'
+import { Button } from '../ui/button'
 import Posts from './Posts'
-import { CrossIcon } from 'lucide-react'
 
 
 
@@ -39,7 +40,7 @@ export default function PostsWithSearch({ posts }: { readonly posts: ReadonlyArr
             className='h-8 px-2 lg:px-3'
           >
             Reset
-            <CrossIcon className='ml-2 h-4 w-4' />
+            <CircleX className='ml-2 h-4 w-4' />
           </Button>
         )}
       </div>
