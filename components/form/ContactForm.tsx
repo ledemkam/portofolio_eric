@@ -9,7 +9,6 @@ import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Textarea } from '@/components/ui/textarea'
 import { ContactFormSchema } from '@/lib/validations'
-import { sendEmail } from '@/lib/actions'
 
 type Inputs = z.infer<typeof ContactFormSchema>
 
@@ -29,15 +28,26 @@ export default function ContactForm() {
   })
 
   const processForm: SubmitHandler<Inputs> = async data => {
-   const result = await sendEmail(data)   
 
-    if (result?.error) {
+    try {
+      const response = await fetch('/api/sendSemail', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ email: data.email , name: data.name, message: data.message})
+      })
+  
+      if (!response.ok) {
+        throw new Error('Network response was not ok')
+      }
+  
+      await response.json()
+      toast.success('Subscribed successfully!')
+      reset()
+    } catch {
       toast.error('Fehlermeldung! Bitte versuht es erneut.')
-      return
     }
-
-    toast.success('Nachright wurde erfolgreich gesendet!')
-    reset()
   }
 
   return (

@@ -7,8 +7,6 @@ import { SubmitHandler, useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
-
-import { subscribe } from '@/lib/actions'
 import { Card, CardContent } from '@/components/ui/card'
 import { NewsletterFormSchema } from '@/lib/validations'
 
@@ -28,16 +26,29 @@ export default function NewsletterForm() {
   })
 
   const processForm: SubmitHandler<Inputs> = async data => {
-    const result = await subscribe(data)
 
-    if (result?.error) {
-      toast.error('An error occurred! Please try again.')
-      return
+    
+  try {
+    const response = await fetch('/api/sendSemail', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ email: data.email })
+    })
+
+    if (!response.ok) {
+      throw new Error('Network response was not ok')
     }
 
-    toast.success('Subscribed successfully!')
+    await response.json()
+    toast.success('Anmeldung erfolgreich!')
     reset()
+  } catch {
+    toast.error('Fehlermeldung! Bitte versuht es erneut.')
   }
+}
+
 
   return (
     <section>
