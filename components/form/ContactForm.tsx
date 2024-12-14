@@ -2,7 +2,7 @@
 
 import { z } from 'zod'
 import Link from 'next/link'
-import { toast } from 'sonner'
+//import { toast } from 'sonner'
 import { SubmitHandler, useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { Button } from '@/components/ui/button'
@@ -28,26 +28,25 @@ export default function ContactForm() {
   })
 
   const processForm: SubmitHandler<Inputs> = async data => {
+    console.log(data)
 
-    try {
-      const response = await fetch('/api/sendSemail', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({ email: data.email , name: data.name, message: data.message})
-      })
+    // try {
+    //   const response = await fetch('/api/sendSemail', {
+    //     method: 'POST',
+    //     headers: {
+    //       'Content-Type': 'application/json'
+    //     },
+    //     body: JSON.stringify({ email: data.email , name: data.name, message: data.message})
+    //   })
   
-      if (!response.ok) {
-        throw new Error('Network response was not ok')
-      }
+   
   
-      await response.json()
-      toast.success('Subscribed successfully!')
+    //   await response.json()
+    //   toast.success('Subscribed successfully!')
       reset()
-    } catch {
-      toast.error('Fehlermeldung! Bitte versuht es erneut.')
-    }
+    // } catch {
+    //   toast.error('Fehlermeldung! Bitte versuht es erneut.')
+    // }
   }
 
   return (
