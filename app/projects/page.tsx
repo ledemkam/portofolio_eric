@@ -10,7 +10,7 @@ export default async function ProjectsPage() {
       <div className='container max-w-3xl'>
         <h1 className='title mb-12'>Projekten</h1>
         <Projects projects={projects} />
-         <p className='mt-6 text-right'>Web-Projekten comming soon, Sie können weitere Projekten <Link href="https://github.com/ledemkam">hier</Link> anschauen</p>
+         <p className='mt-6 text-right'> weitere Projekten <Link href="https://github.com/ledemkam">hier</Link> anschauen</p>
       </div>
     </section>
   )

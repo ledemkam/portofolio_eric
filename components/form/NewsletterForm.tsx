@@ -55,7 +55,7 @@ export default function NewsletterForm() {
       <Card className='rounded-lg border-0 dark:border'>
         <CardContent className='flex flex-col gap-8 pt-6 md:flex-row md:justify-between md:pt-8'>
           <div>
-            <h2 className='text-2xl font-bold'>meinen Newsletter abonnieren</h2>
+            <h2 className='text-2xl font-bold'>Zum Newsletter anmelden</h2>
             <p className='text-muted-foreground'>
             Erhalten Sie Updates zu meiner Arbeit und meinen Projekten.            </p>
           </div>
@@ -69,7 +69,7 @@ export default function NewsletterForm() {
                 type='email'
                 id='email'
                 autoComplete='email'
-                placeholder='Email'
+                placeholder='Ihr Email Adresse'
                 className='w-full'
                 {...register('email')}
               />
@@ -87,7 +87,7 @@ export default function NewsletterForm() {
                 disabled={isSubmitting}
                 className='w-full disabled:opacity-50'
               >
-                {isSubmitting ? 'Submitting...' : 'Subscribe'}
+                {isSubmitting ? 'Submitting...' : 'Anmelden'}
               </Button>
             </div>
 
